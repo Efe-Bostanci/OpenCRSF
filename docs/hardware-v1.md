@@ -40,3 +40,7 @@ The firmware currently in the repository is the V1 firmware and is also intended
 ## Source assets
 
 The repository contains the original V1 schematic export in SVG format. The SVG is the actual schematic export from the project and is linked above.
+
+## V1 2D PCB
+
+The original V1 PCB layout image will be placed here as the original PNG export.
