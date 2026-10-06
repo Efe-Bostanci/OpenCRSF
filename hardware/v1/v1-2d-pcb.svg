@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1012" height="547" viewBox="0 0 1012 547">
+<rect width="1012" height="547" fill="#303030"/>
+<g transform="translate(147 167)">
+<rect width="709" height="241" rx="2" fill="#0867bd" stroke="#fff" stroke-width="3"/>
+<!-- mounting / edge holes -->
+<g fill="#d6a900" stroke="#222" stroke-width="4">
+<circle cx="20" cy="20" r="10"/><circle cx="53" cy="20" r="10"/><circle cx="87" cy="20" r="10"/><circle cx="121" cy="20" r="10"/><circle cx="154" cy="20" r="10"/><circle cx="188" cy="20" r="10"/><circle cx="222" cy="20" r="10"/><circle cx="256" cy="20" r="10"/>
+<circle cx="20" cy="221" r="10"/><circle cx="53" cy="221" r="10"/><circle cx="87" cy="221" r="10"/><circle cx="121" cy="221" r="10"/><circle cx="154" cy="221" r="10"/><circle cx="188" cy="221" r="10"/><circle cx="222" cy="221" r="10"/><circle cx="256" cy="221" r="10"/>
+</g>
+<!-- left routing -->
+<g fill="none" stroke="#164d91" stroke-width="5" opacity=".95">
+<path d="M20 20H270L320 70"/>
+<path d="M53 20H220L285 85"/>
+<path d="M87 20H205L280 95"/>
+<path d="M121 20H190L270 110"/>
+<path d="M20 221H270L320 170"/>
+<path d="M53 221H220L285 155"/>
+<path d="M87 221H205L280 145"/>
+<path d="M121 221H190L270 130"/>
+</g>
+<!-- central divider -->
+<path d="M304 0V241" stroke="#fff" stroke-width="3"/>
+<!-- power/status -->
+<g fill="#e5b900" stroke="#fff" stroke-width="2">
+<rect x="324" y="14" width="28" height="25"/><rect x="365" y="14" width="28" height="25"/>
+<rect x="324" y="203" width="28" height="25"/><rect x="365" y="203" width="28" height="25"/>
+</g>
+<g fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="700">
+<text x="412" y="31">POWER</text><text x="412" y="221">STATUS</text>
+</g>
+<!-- GPIO header -->
+<g fill="#e5b900" stroke="#fff" stroke-width="2">
+<rect x="330" y="65" width="47" height="17"/><rect x="330" y="91" width="47" height="17"/>
+<rect x="330" y="117" width="47" height="17"/><rect x="330" y="143" width="47" height="17"/>
+</g>
+<g fill="#fff" font-family="Arial,sans-serif" font-size="14" font-weight="700">
+<text x="385" y="79">3.3v</text><text x="385" y="105">GPIO10</text><text x="385" y="131">GPIO9</text><text x="385" y="157">GPIO8</text>
+</g>
+<!-- capacitors -->
+<g fill="none" stroke="#fff" stroke-width="3"><circle cx="483" cy="78" r="31"/><circle cx="483" cy="164" r="22"/></g>
+<g fill="#e5b900" stroke="#222" stroke-width="4"><circle cx="483" cy="78" r="9"/><circle cx="483" cy="164" r="9"/></g>
+<g fill="#fff" font-family="Arial,sans-serif" font-size="12" font-weight="700"><text x="474" y="42">C2</text><text x="474" y="143">C1</text></g>
+<!-- vertical connector -->
+<g fill="#d6a900" stroke="#222" stroke-width="4">
+<circle cx="553" cy="75" r="10"/><circle cx="553" cy="110" r="10"/><circle cx="553" cy="145" r="10"/><circle cx="553" cy="180" r="10"/>
+</g>
+<rect x="537" y="50" width="32" height="157" fill="none" stroke="#fff" stroke-width="3"/>
+<!-- servo headers -->
+<g fill="#d6a900" stroke="#222" stroke-width="4">
+<circle cx="622" cy="30" r="11"/><circle cx="622" cy="64" r="11"/><circle cx="622" cy="98" r="11"/><circle cx="622" cy="132" r="11"/><circle cx="622" cy="166" r="11"/><circle cx="622" cy="200" r="11"/><circle cx="656" cy="30" r="11"/><circle cx="656" cy="64" r="11"/><circle cx="656" cy="98" r="11"/><circle cx="656" cy="132" r="11"/><circle cx="656" cy="166" r="11"/><circle cx="656" cy="200" r="11"/><circle cx="690" cy="30" r="11"/><circle cx="690" cy="64" r="11"/><circle cx="690" cy="98" r="11"/><circle cx="690" cy="132" r="11"/><circle cx="690" cy="166" r="11"/><circle cx="690" cy="200" r="11"/>
+</g>
+<rect x="604" y="13" width="96" height="203" fill="none" stroke="#fff" stroke-width="3"/>
+<g fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="700">
+<text x="608" y="35">CH1</text><text x="608" y="69">CH2</text><text x="608" y="103">CH3</text><text x="608" y="137">CH4</text><text x="608" y="171">CH5</text><text x="608" y="205">CH6</text>
+</g>
+<!-- board marking -->
+<g fill="#fff" font-family="Arial,sans-serif" font-weight="700">
+<text transform="translate(43 180) rotate(-90)" font-size="25">OpenCRSF</text>
+<text transform="translate(72 180) rotate(-90)" font-size="15">by</text>
+<text transform="translate(96 180) rotate(-90)" font-size="15">Efe Bostancı</text>
+</g>
+<!-- center logo placeholder based on original board render -->
+<rect x="118" y="72" width="94" height="94" fill="#fff"/>
+<circle cx="165" cy="119" r="27" fill="none" stroke="#1680c9" stroke-width="3"/>
+<path d="M150 136c12-28 25-38 37-30 7 5 9 14 6 23-6 17-30 20-43 7z" fill="none" stroke="#1680c9" stroke-width="3"/>
+</g></svg>
