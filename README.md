@@ -162,4 +162,4 @@ The most useful part of the project has been using an actual hardware failure to
 Electrical and Electronics Engineering student  
 Interested in embedded systems, UAVs, RC electronics and PCB design.
 
-[GitHub profile](https://github.com/Efe-Bostanci)
+[GitHub profile](https://github.com/Efe-Bostanci) · [LinkedIn](https://www.linkedin.com/in/efe-bostanci-0b3997233)
