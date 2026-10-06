@@ -4,9 +4,11 @@ V1 is the first working OpenCRSF hardware revision.
 
 ## Original electrical schematic
 
-The original EasyEDA schematic is included directly in the repository:
+The original EasyEDA schematic is included directly in the repository. A GitHub-renderable preview is provided separately, while the original export is kept unchanged.
 
-[OpenCRSF V1 schematic — SVG](../hardware/v1/Schematic_OpenCRSF_2026-10-07.svg)
+![OpenCRSF V1 schematic preview](../hardware/v1/Schematic_OpenCRSF_2026-10-07-preview.svg)
+
+[OpenCRSF V1 schematic — original SVG](../hardware/v1/Schematic_OpenCRSF_2026-10-07.svg)
 
 The schematic title is **OpenCRSF (CRSF to PWM converter)**, revision **1.0**, dated **2026-07-11**.
 
