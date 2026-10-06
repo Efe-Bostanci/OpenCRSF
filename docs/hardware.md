@@ -4,6 +4,8 @@ OpenCRSF has two hardware revisions that must be considered separately.
 
 ## V1
 
+[Detailed V1 hardware documentation](hardware-v1.md)
+
 V1 is the first working prototype.
 
 It demonstrated the core concept:
