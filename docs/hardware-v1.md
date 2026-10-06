@@ -2,11 +2,19 @@
 
 V1 is the first working OpenCRSF hardware revision.
 
-The V1 electrical schematic supplied for this project is titled **OpenCRSF (CRSF to PWM converter)**, revision **1.0**, dated **2026-07-11**.
+## Original electrical schematic
 
-## Electrical design
+The original EasyEDA schematic is included directly in the repository:
 
-The V1 schematic is built around an **ESP32-C3 SuperMini** and provides six 3-pin PWM/servo connectors:
+[OpenCRSF V1 schematic — SVG](../hardware/v1/Schematic_OpenCRSF_2026-10-07.svg)
+
+The schematic title is **OpenCRSF (CRSF to PWM converter)**, revision **1.0**, dated **2026-07-11**.
+
+This is the original schematic export. It is not a recreated or simplified drawing.
+
+## Circuit
+
+The V1 schematic is built around an **ESP32-C3 SuperMini** and includes six PWM output channels:
 
 - CH1
 - CH2
@@ -15,38 +23,18 @@ The V1 schematic is built around an **ESP32-C3 SuperMini** and provides six 3-pi
 - CH5
 - CH6
 
-The schematic also includes an ELRS receiver connector with:
+It also includes an ELRS receiver interface, indicator LEDs, decoupling/bulk capacitors and a 1x5 2 mm SMD header.
 
-- 5V
-- TX
-- RX
-- GND
+The schematic contains the GPIO/net labels used by the original design. The exact electrical connections should be read from the source schematic above rather than inferred from a simplified block diagram.
 
-The ESP32-C3 is powered from the 5V / 3.3V arrangement shown in the original schematic.
-
-## Indicators and headers
-
-The V1 schematic contains:
-
-- green LED indicator
-- blue LED indicator
-- LED resistors
-- 100 nF decoupling capacitor
-- 10 uF capacitor
-- 1x5 2 mm SMD header exposing GPIO / 3.3 V connections
-
-The six PWM channels are associated with ESP32-C3 GPIOs 0, 1, 2, 3, 4 and 5 in the schematic.
-
-## Important revision boundary
+## Revision boundary
 
 This page describes **V1 only**.
 
-Do not use the V2 power/protection component list as a description of this hardware. V2 is a separate redesign of the power/protection section.
+V2 is a separate hardware revision with a redesigned power/protection section. V1 and V2 component lists must not be mixed.
 
 The firmware currently in the repository is the V1 firmware and is also intended for V2.
 
-## Source files
+## Source assets
 
-The original V1 schematic and board/render files were supplied during development. The repository documentation is intentionally based on those actual design files rather than a simplified replacement drawing.
-
-When the original EasyEDA project/source assets are available in repository-compatible form, they should be stored alongside this documentation so the design can be edited directly.
+The repository currently contains the original V1 schematic export in SVG format. The EasyEDA JSON source, PDF export and PCB image are retained as source assets from the project and can be added separately when the GitHub binary/source upload path permits them.
