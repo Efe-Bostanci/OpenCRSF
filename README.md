@@ -1,52 +1,136 @@
 # OpenCRSF
 
-A compact, from-scratch ESP32-C3 board that takes an ExpressLRS (CRSF) receiver's serial output and converts it into 6 standard PWM servo channels — built to work as a drop-in receiver for RC aircraft and vehicles, powered from any one of its 6 servo connectors, exactly like a standard RC receiver.
+**OpenCRSF** is a custom RC receiver project built around an **ESP32-C3 SuperMini**. It reads an ExpressLRS receiver's **CRSF** data over UART and converts it into **6 standard PWM outputs** for servos and ESCs.
 
-## Overview
+The project started while I was working on an RC car and grew into a custom board focused on both signal conversion and power protection.
 
-- **MCU:** ESP32-C3 SuperMini
-- **RF link:** ExpressLRS, received as CRSF over UART
-- **Output:** 6× standard 3-pin PWM servo channels
-- **Power input:** any of the 6 servo connectors can source power (ESC/BEC) — all six +5V pins are a single shared bus, so the board doesn't care which channel the battery/ESC is plugged into
-- **Design tool:** EasyEDA
+![OpenCRSF signal path](docs/architecture.svg)
 
-## Why this exists
+## What it does
 
-Most RC receivers are closed, fixed-function boards. OpenCRSF is a ground-up, open design — the same CRSF-to-PWM job, but built and understood from the power section up, including real protection against the failure modes that actually happen in this hobby (reverse polarity, shared-bus faults, noisy BEC output under heavy load) rather than a single fuse and hoping for the best.
+```text
+RadioMaster
+    │
+    ▼
+ExpressLRS receiver
+    │
+    │ CRSF / UART
+    ▼
+ESP32-C3 SuperMini
+    │
+    ├── CH1 PWM
+    ├── CH2 PWM
+    ├── CH3 PWM  → ESC / throttle
+    ├── CH4 PWM
+    ├── CH5 PWM
+    └── CH6 PWM
+```
 
-## Hardware revision history
+The firmware handles CRSF frame parsing, channel mapping, PWM generation and failsafe behaviour.
+
+## Why I started it
+
+I was working on an RC car that was controlled with a FlySky FC-CT6B. I wanted to use my RadioMaster transmitter instead, together with an ELRS receiver.
+
+That created a simple hardware problem: the receiver outputs CRSF data, while the servos and ESC expect standard PWM.
+
+I looked for CRSF-to-PWM converters, but they were expensive and not easy to find, so I decided to build one myself.
+
+The first prototype was built on perfboard. It worked and could control 6 servos and a motor. During a later test, connecting the BEC resulted in the ELRS receiver being destroyed.
+
+Instead of only replacing the receiver, I continued the project around the power side. OpenCRSF is now being developed as a board that can handle the CRSF-to-PWM conversion while also protecting the receiver, ESP32 and servo system from power related problems.
+
+## Hardware revisions
 
 ### V1
 
-First working revision. Powered from a single ESC/BEC, tested with up to 6 simultaneous servos and a brushless motor with no issues. Failed during a full-power test with a second, higher-current ESC driving a larger motor: the ELRS receiver overheated and was permanently destroyed.
+The first working revision.
 
-Root cause, after investigation: V1's power section had only a PTC fuse, a TVS diode, and bulk capacitors sitting directly on the shared power rail — no protection against sustained BEC instability/noise under heavy load, and no reverse-polarity protection at all.
+The prototype was able to control:
 
-### V2 — current
+- 6 PWM channels
+- 6 servos
+- a brushless motor / ESC
 
-Power section rebuilt around one key realization: with power allowed in from any of six connectors, there is only one real shared node (`VBUS`), and a series protection element (a fuse, a MOSFET) can never protect that shared node from itself — it can only gate a *separate, derived* branch. A shunt element (a TVS diode) is the only thing that protects the whole shared bus for free, regardless of which connector a fault enters from.
+V1 was tested successfully with a single ESC/BEC. During a later full power test with a higher current ESC and a larger motor, the ELRS receiver overheated and was permanently damaged.
 
-That distinction shaped the architecture:
+The V1 power section used a PTC fuse, a TVS diode and bulk capacitors, but it did not provide enough isolation for the electronics branch and had no reverse polarity protection.
 
-- **`VBUS`** — the single shared node all 6 servo connectors' +5V pins tie to. Carries a PTC fuse (`F1`, 2.5A), a bidirectional TVS (`D1`, P6KE6.8CA), and bulk capacitance (1000µF + 100µF + 100nF). This protects the entire shared bus — every connector, every servo — for free, no matter which one the power enters from.
-- **`Q1`** (AO3401A, P-channel MOSFET) gates a second, derived rail (`SYS_5V`) that exclusively feeds the ESP32 and the ELRS receiver. Correctly oriented — Drain toward the raw bus, Source toward the protected rail — so the MOSFET's own body diode blocks a reversed connection instead of quietly leaking it through to the electronics.
-- **`F2`**, a second, smaller PTC fuse, and **`D2`**, a Schottky diode, further isolate the sensitive electronics branch — including blocking USB power from backfeeding into the main bus if the board is plugged into a computer for programming while still connected to a battery.
+### V2
 
-### V3 — planned
+V2 focuses on separating the high current servo power path from the sensitive electronics.
 
-A buck regulator stage between the protected branch and the electronics, so the ESP32/ELRS no longer depend on the connected BEC's own regulation quality at all. This targets what's now believed to be the actual root cause of the V1 failure: a high-current ESC's BEC output becoming unstable under heavy load, rather than a simple reverse-polarity event.
+![V2 power architecture](docs/power-architecture-v2.svg)
 
-## Status
+The documented V2 architecture contains:
 
-Paused as of October 2026 while sourcing the final regulator component for V3. The V2 power section schematic is finalized and verified correct (MOSFET orientation, fuse placement, shared-bus vs. derived-branch protection, USB backfeed isolation); the V3 buck-converter addition is designed on paper but not yet built into a board revision.
+- a shared `VBUS` for the six servo connectors
+- `F1` PTC protection
+- `D1` P6KE6.8CA bidirectional TVS protection
+- bulk capacitors on the shared bus
+- `Q1` AO3401A P-channel MOSFET for the electronics branch
+- `F2` and `D2` for additional protection and USB backfeed isolation
+- a separate `SYS_5V` rail for the ESP32 and ELRS receiver
 
-## Repository contents
+The idea is to keep the high current servo bus and the sensitive electronics from relying on the same unprotected path.
 
-- `hardware/` — EasyEDA schematic exports
-- More to come as the project resumes
+### V3
+
+V3 is planned around a buck regulator for the electronics rail. The goal is to make the ESP32 and ELRS receiver less dependent on the regulation quality of the external BEC.
+
+## Firmware
+
+The firmware is written for Arduino on the ESP32-C3.
+
+The main application:
+
+- reads CRSF frames at **420000 baud**
+- maps receiver channels to outputs
+- generates **6 PWM channels at 50 Hz**
+- applies predefined failsafe positions when the signal is lost
+- provides serial diagnostics including frame count and CRC errors
+
+The main sketch is kept modular and uses separate components for CRSF parsing, servo control and failsafe handling.
+
+The current repository contains the main sketch in [`firmware/OpenCRSF.ino.cpp`](firmware/OpenCRSF.ino.cpp). The remaining supporting source files are being organized from the development archive as the project is cleaned up for the repository.
+
+## Project structure
+
+```text
+OpenCRSF/
+├── README.md
+├── firmware/
+│   └── OpenCRSF.ino.cpp
+└── docs/
+    ├── architecture.svg
+    └── power-architecture-v2.svg
+```
+
+More hardware files, source modules and documentation will be added as the project continues.
+
+## Current status
+
+| Revision | Status |
+|---|---|
+| V1 | Built and tested |
+| V2 | Power architecture designed |
+| V3 | Planned |
+
+The project is still under development and I update the repository as new parts of the design are completed.
+
+## What this project has involved
+
+OpenCRSF has turned into a practical project covering embedded systems, RC electronics and hardware debugging:
+
+**CRSF protocol** → **UART communication** → **PWM generation** → **failsafe logic** → **power distribution** → **protection circuits** → **PCB design**
+
+The most useful part of the project has been taking a real hardware failure and using it to drive the next hardware revision.
 
 ## Author
 
-**Efe Bostancı** — Electrical & Electronics Engineering student, İstanbul Aydın University. UAV/drone systems, PCB design, and embedded hardware.
+**Efe Bostancı**
 
-[GitHub](https://github.com/Efe-Bostanci) · [LinkedIn](https://linkedin.com/in/efe-bostanci-0b3997233)
+Electrical and Electronics Engineering student  
+Interested in embedded systems, UAVs, RC electronics and PCB design.
+
+[GitHub](https://github.com/Efe-Bostanci)
