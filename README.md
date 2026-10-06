@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/33121601/README.md)
 # OpenCRSF
 
 A compact, from-scratch ESP32-C3 board that takes an ExpressLRS (CRSF) receiver's serial output and converts it into 6 standard PWM servo channels — built to work as a drop-in receiver for RC aircraft and vehicles, powered from any one of its 6 servo connectors, exactly like a standard RC receiver.
