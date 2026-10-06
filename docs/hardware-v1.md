@@ -6,7 +6,7 @@ V1 is the first working OpenCRSF hardware revision.
 
 The original EasyEDA schematic is included directly in the repository. A GitHub-renderable preview is provided separately, while the original export is kept unchanged.
 
-![OpenCRSF V1 schematic preview](../hardware/v1/Schematic_OpenCRSF_2026-10-07-preview.svg)
+<img src="https://raw.githubusercontent.com/Efe-Bostanci/OpenCRSF/main/hardware/v1/Schematic_OpenCRSF_2026-10-07-preview.svg" alt="OpenCRSF V1 schematic preview" />
 
 [OpenCRSF V1 schematic — original SVG](../hardware/v1/Schematic_OpenCRSF_2026-10-07.svg)
 
