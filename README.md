@@ -43,7 +43,7 @@ That failure changed the direction of the project. Instead of treating it as onl
 
 ### V1
 
-[Detailed V1 hardware documentation](docs/hardware-v1.md)
+[Detailed V1 hardware documentation](docs/hardware-v1.md) · [Original V1 schematic](hardware/v1/Schematic_OpenCRSF_2026-10-07.svg)
 
 V1 was the first working hardware revision.
 
