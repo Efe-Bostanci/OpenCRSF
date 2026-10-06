@@ -49,4 +49,4 @@ Paused as of October 2026 while sourcing the final regulator component for V3. T
 
 **Efe Bostancı** — Electrical & Electronics Engineering student, İstanbul Aydın University. UAV/drone systems, PCB design, and embedded hardware.
 
-[GitHub](https://github.com/Efe-Bostanci) · [LinkedIn](https://linkedin.com/in/efe-bostanci)
+[GitHub](https://github.com/Efe-Bostanci) · [LinkedIn](https://linkedin.com/in/efe-bostanci-0b3997233)
