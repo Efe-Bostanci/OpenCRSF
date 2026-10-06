@@ -19,6 +19,10 @@ RadioMaster transmitter
 
 The firmware parses CRSF frames, maps receiver channels to PWM outputs and applies failsafe positions when the receiver signal is lost.
 
+### System architecture
+
+![OpenCRSF system architecture](docs/diagrams/opencrsf-system-architecture.png)
+
 ## Why I built it
 
 I was working on an RC car controlled by a FlySky FC-CT6B. I wanted to move to a RadioMaster transmitter with an ELRS receiver.
@@ -68,6 +72,8 @@ The current V2 design uses a shared servo bus and a separately protected electro
 - separate `SYS_5V` rail for the ESP32 and ELRS receiver
 
 The V2 schematic will be documented from the actual EasyEDA project files. No simplified drawing is used as a substitute for the electrical schematic.
+
+![OpenCRSF V2 power and protection](docs/diagrams/opencrsf-v2-power-protection.png)
 
 See [V1 / V2 revision notes](docs/revisions.md) and [hardware documentation](docs/hardware.md).
 
