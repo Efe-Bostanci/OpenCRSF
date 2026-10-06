@@ -122,6 +122,9 @@ OpenCRSF/
 ├── firmware/
 │   ├── OpenCRSF.ino.cpp
 │   └── README.md
+├── hardware/
+│   └── v1/
+│       └── Schematic_OpenCRSF_2026-10-07.svg
 └── docs/
     ├── firmware.md
     ├── hardware.md
