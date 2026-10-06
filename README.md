@@ -43,6 +43,8 @@ That failure changed the direction of the project. Instead of treating it as onl
 
 ### V1
 
+[Detailed V1 hardware documentation](docs/hardware-v1.md)
+
 V1 was the first working hardware revision.
 
 It was tested with:
@@ -123,6 +125,7 @@ OpenCRSF/
 └── docs/
     ├── firmware.md
     ├── hardware.md
+    ├── hardware-v1.md
     └── revisions.md
 ```
 
