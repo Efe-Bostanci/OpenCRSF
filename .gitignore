@@ -1,0 +1,23 @@
+# Arduino / PlatformIO build output
+core/
+libraries/
+ld_h/
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+*.eep
+
+# Arduino IDE
+.arduino15/
+arduino_build/
+arduino_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
