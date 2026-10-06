@@ -4,8 +4,6 @@
 
 The project started while I was working on an RC car and grew into a custom board focused on both signal conversion and power protection.
 
-![OpenCRSF signal path](docs/architecture.svg)
-
 ## What it does
 
 ```text
@@ -60,9 +58,7 @@ The V1 power section used a PTC fuse, a TVS diode and bulk capacitors, but it di
 
 V2 focuses on separating the high current servo power path from the sensitive electronics.
 
-![V2 power architecture](docs/power-architecture-v2.svg)
-
-The documented V2 architecture contains:
+The V2 hardware architecture is being redesigned around the power and protection section. It should be documented from the actual EasyEDA schematic rather than represented by a simplified block diagram.
 
 - a shared `VBUS` for the six servo connectors
 - `F1` PTC protection
@@ -72,7 +68,7 @@ The documented V2 architecture contains:
 - `F2` and `D2` for additional protection and USB backfeed isolation
 - a separate `SYS_5V` rail for the ESP32 and ELRS receiver
 
-The idea is to keep the high current servo bus and the sensitive electronics from relying on the same unprotected path.
+The main goal is to keep the high current servo path from directly exposing the ESP32 and ELRS receiver to the same power faults.
 
 ### V3
 
@@ -80,7 +76,7 @@ V3 is planned around a buck regulator for the electronics rail. The goal is to m
 
 ## Firmware
 
-The firmware is written for Arduino on the ESP32-C3.
+The firmware is written for Arduino on the ESP32-C3. The source currently shown in this repository belongs to V1 and is also intended to run on the V2 hardware.
 
 The main application:
 
@@ -92,7 +88,9 @@ The main application:
 
 The main sketch is kept modular and uses separate components for CRSF parsing, servo control and failsafe handling.
 
-The current repository contains the main sketch in [`firmware/OpenCRSF.ino.cpp`](firmware/OpenCRSF.ino.cpp). The remaining supporting source files are being organized from the development archive as the project is cleaned up for the repository.
+The current firmware source in the repository is the V1 firmware. The same firmware architecture is intended to be used with V2 hardware. V2 changes the power and protection circuitry, not the CRSF-to-PWM application logic.
+
+The development build contains the supporting source files `config.h`, `crc.cpp/h`, `crsf.cpp/h`, `failsafe.cpp/h` and `servo.cpp/h`. These will be added to the repository as the source tree is cleaned up.
 
 ## Project structure
 
@@ -106,7 +104,7 @@ OpenCRSF/
     └── power-architecture-v2.svg
 ```
 
-More hardware files, source modules and documentation will be added as the project continues.
+The actual V1/V2 schematics and hardware files will be added once the EasyEDA project files are organized. I am keeping the V1 firmware and V2 hardware documentation separate so the revisions are not mixed.
 
 ## Current status
 
