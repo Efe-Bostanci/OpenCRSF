@@ -37,4 +37,4 @@ The firmware currently in the repository is the V1 firmware and is also intended
 
 ## Source assets
 
-The repository currently contains the original V1 schematic export in SVG format. The EasyEDA JSON source, PDF export and PCB image are retained as source assets from the project and can be added separately when the GitHub binary/source upload path permits them.
+The repository contains the original V1 schematic export in SVG format. The SVG is the actual schematic export from the project and is linked above.
