@@ -43,7 +43,7 @@ That failure changed the direction of the project. Instead of treating it as onl
 
 ### V1
 
-[Detailed V1 hardware documentation](docs/hardware-v1.md) · [Original V1 schematic](hardware/v1/Schematic_OpenCRSF_2026-10-07.svg)
+[Detailed V1 hardware documentation](docs/hardware-v1.md) · [V1 PCB image](docs/images/v1%202D%20PCB.png)
 
 V1 was the first working hardware revision.
 
@@ -59,12 +59,6 @@ The V1 power section used a PTC fuse, TVS protection and bulk capacitors. It did
 
 The V1 hardware is kept separate from the V2 design in the documentation.
 
-### V2 PCB Schematic
-
-![OpenCRSF PCB V2 Schematic](hardware/v2/PCB_V2_Schematic.svg)
-
-[View full-size schematic](hardware/v2/PCB_V2_Schematic.svg)
-
 ### V2
 
 V2 is focused primarily on the power and protection section.
@@ -79,7 +73,7 @@ The current V2 design uses a shared servo bus and a separately protected electro
 - `F2` and `D2` for additional protection and USB backfeed isolation
 - separate `SYS_5V` rail for the ESP32 and ELRS receiver
 
-The V2 schematic will be documented from the actual EasyEDA project files. No simplified drawing is used as a substitute for the electrical schematic.
+The V2 schematic PDF and its rendered page image will be added here once the binary files can be uploaded through the available GitHub connection.
 
 ![OpenCRSF V2 power and protection](docs/diagrams/opencrsf-v2-power-protection.png)
 
