@@ -73,7 +73,11 @@ The current V2 design uses a shared servo bus and a separately protected electro
 - `F2` and `D2` for additional protection and USB backfeed isolation
 - separate `SYS_5V` rail for the ESP32 and ELRS receiver
 
-The V2 schematic PDF and its rendered page image will be added here once the binary files can be uploaded through the available GitHub connection.
+**V2 schematic**
+
+![OpenCRSF V2 schematic](docs/images/opencrsf-v2-schematic.png)
+
+[Open or download the V2 schematic PDF](hardware/v2/Schematic_OpenCRSF-V2_2026-10-10.pdf)
 
 ![OpenCRSF V2 power and protection](docs/diagrams/opencrsf-v2-power-protection.png)
 
