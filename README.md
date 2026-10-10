@@ -77,7 +77,7 @@ The current V2 design uses a shared servo bus and a separately protected electro
 
 ![OpenCRSF V2 schematic](docs/images/opencrsf-v2-schematic.png)
 
-[Open or download the V2 schematic PDF](hardware/v2/Schematic_OpenCRSF-V2_2026-10-10.pdf)
+[Open or download the V2 schematic PDF](https://github.com/Efe-Bostanci/OpenCRSF/blob/main/hardware/v2/Schematic_OpenCRSF-V2_2026-10-10.pdf)
 
 ![OpenCRSF V2 power and protection](docs/diagrams/opencrsf-v2-power-protection.png)
 
