@@ -59,6 +59,12 @@ The V1 power section used a PTC fuse, TVS protection and bulk capacitors. It did
 
 The V1 hardware is kept separate from the V2 design in the documentation.
 
+### V2 PCB Schematic
+
+![OpenCRSF PCB V2 Schematic](hardware/v2/PCB_V2_Schematic.svg)
+
+[View full-size schematic](hardware/v2/PCB_V2_Schematic.svg)
+
 ### V2
 
 V2 is focused primarily on the power and protection section.
